@@ -8,7 +8,13 @@
 %}
 
 %token STRING
+//%token ARGS
+//%token ENTER
+//%token INPUTRE
+//%token OUTPUTRe
 
+//%token PIPE
+ 
 %%
 line            :   /* empty */
                     |command                        {   execute();  commandDone = 1;   }
@@ -96,23 +102,25 @@ void yyerror()
 ****************************************************************/
 int main(int argc, char** argv) {
     int i;
-    char c;
+    //char c;
 
     init(); //初始化环境
     commandDone = 0;
     
     printf("user-sh> "); //打印提示符信息
 
-    while(1){
-        i = 0;
+     while(1){
+       i = 0;
+        char c;
+         while((c=getchar())==-1);
+         ungetc(c,stdin); 
         while((c = getchar()) != '\n'){ //读入一行命令
             inputBuff[i++] = c;
         }
         inputBuff[i] = '\0';
 
         len = i;
-        offset = 0;
-        
+        offset =0; 
         yyparse(); //调用语法分析函数，该函数由yylex()提供当前输入的单词符号
 
         if(commandDone == 1){ //命令已经执行完成后，添加历史记录信息
@@ -121,7 +129,8 @@ int main(int argc, char** argv) {
         }
         
         printf("user-sh> "); //打印提示符信息
-     }
+      // memset(inputBuff, 0, sizeof(inputBuff)); 
+}
 
     return (EXIT_SUCCESS);
 }

@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_NAME_TAB_H_INCLUDED
-# define YY_YY_NAME_TAB_H_INCLUDED
+#ifndef YY_YY_BISON_TAB_H_INCLUDED
+# define YY_YY_BISON_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -45,9 +45,12 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    NAME = 258,
-    EQ = 259,
-    AGE = 260
+    STRING = 258,
+    ARGS = 259,
+    ENTER = 260,
+    INPUTRE = 261,
+    OUTPUTRE = 262,
+    PIPE = 263
   };
 #endif
 
@@ -63,4 +66,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_NAME_TAB_H_INCLUDED  */
+#endif /* !YY_YY_BISON_TAB_H_INCLUDED  */

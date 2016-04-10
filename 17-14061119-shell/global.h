@@ -19,7 +19,8 @@ extern "C" {
         char **args;    // 命令及参数
         char *input;    // 输入重定向
         char *output;   // 输出重定向
-    } SimpleCmd;
+        char **progB; 
+ } SimpleCmd;
 
     typedef struct History {
         int start;                    //首位置
